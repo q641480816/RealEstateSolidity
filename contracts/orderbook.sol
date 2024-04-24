@@ -117,6 +117,10 @@ contract SellOrderBook is ReentrancyGuard, Ownable {
         }
     }
 
+    function getAllOrders() external view returns (Order[] memory) {
+        return orders;
+    }
+
     function getOrdersBySeller(
         address seller
     ) external view returns (Order[] memory) {
