@@ -168,4 +168,10 @@ contract SellOrderBook is ReentrancyGuard, Ownable {
 
         return addrHistories;
     }
+
+    receive() external payable { }
+
+    fallback() external payable {
+        revert("Do not send Ether with data to this contract.");
+    }
 }
