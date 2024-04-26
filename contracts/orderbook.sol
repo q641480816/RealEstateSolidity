@@ -94,9 +94,11 @@ contract SellOrderBook is ReentrancyGuard, Ownable {
         Order storage order = orders[orderId];
         require(amount <= order.amount, "Insufficient order amount available");
 
-        uint256 totalCost = amount * order.pricePerToken;
+        uint256 totalCost = amount * order.pricePerToken / 1000;
         ssgdToken.transferFrom(msg.sender, order.seller, totalCost);
         IERC20(order.token).transfer(msg.sender, amount);
+
+        orders[orderId].amount = order.amount - amount;
 
         emit OrderFulfilled(orderId, msg.sender, amount);
 
@@ -106,7 +108,7 @@ contract SellOrderBook is ReentrancyGuard, Ownable {
                 seller: order.seller,
                 buyer: msg.sender,
                 token: order.token,
-                amount: order.amount,
+                amount: amount,
                 pricePerToken: order.pricePerToken,
                 timestamp: block.timestamp
             })

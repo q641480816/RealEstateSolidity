@@ -14,6 +14,6 @@ contract SUPERSGD is ERC20, Ownable  {
     }
 
     function decimals() public pure override returns (uint8) {
-        return 2;
+        return 5;
     }
 }

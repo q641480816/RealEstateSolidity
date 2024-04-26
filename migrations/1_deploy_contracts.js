@@ -11,5 +11,5 @@ module.exports = (deployer) => {
     // deployer.deploy(PROPERTYB);
     // deployer.deploy(PROPERTYD);
     // deployer.deploy(PROPERTYC);
-    deployer.deploy(SellOrderBook, '0x8b853cADefEDffF7ebb27078213640E5BeBc951D');
+    deployer.deploy(SellOrderBook, '0xfF9Dc5504EDc32d96268649B6e9B5cBdC5298C9C');
 };
